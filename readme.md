@@ -1,4 +1,8 @@
+
+# Insights:
+
 * meta data for `fraudTest.csv` and `fraudTrain.csv`
+```
 index - Unique Identifier for each row
 trans_date_trans_time - Transaction DateTime
 cc_num - Credit Card Number of Customer
@@ -22,4 +26,19 @@ unix_time - UNIX Time of transaction
 merch_lat - Latitude Location of Merchant
 merch_long - Longitude Location of Merchant
 is_fraud - Fraud Flag <--- Target Class
+```
+## important functions in excel 
+* functions in excel are akin to statistical functions in scipy, numpy, pandas etc. operating on arrays, matrices or rows of data usually
+* `=<name of function e.g. SUM>(<cell column letter and row number e.g. A1>: <cell column letter and row number e.g. A10>)` or `=<name of function e.g. RANDARRAY>(<num rows>, <num cols>, <min random num to be generated>, <max random num to be generated>, <boolean value indicating whether to generate only integers e.g. TRUE or FALSE>)`
+* selecting a cell and then inputting `=RANDARRAY(10, 10, -100, 100, FALSE)` will generate a matrix of 10 x 10 dimensions of random float numbers (since integer arg is set to false) between -100 and 100  
+* copying a range of cells (vector or matrices) and then pasting the cell range where you've pasted the values to will be still highlighted from here you can still press ctrl and see what paste options you want to have happen, 
+* if you want a vector or matrix of cells to remain unmoved while you scroll horizontally and/or vertically click `view -> freeze panes`
+## important shortcuts in excel
+* ctrl + n
+* to make widths or heights of each column or row the same select the range of columns or rows and right click one of the divider lines of these selected range of columns and row indeces, a dialog will popup indicating what value you want for the width or height then press enter
+* to edit cell you can type directly into it or press f2
 
+# Questions:
+* how to fill in missing values?
+* how to drop undesired values based on a filter?
+* what is formatting data?
