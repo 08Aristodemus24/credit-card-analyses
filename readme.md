@@ -33,12 +33,17 @@ is_fraud - Fraud Flag <--- Target Class
 * selecting a cell and then inputting `=RANDARRAY(10, 10, -100, 100, FALSE)` will generate a matrix of 10 x 10 dimensions of random float numbers (since integer arg is set to false) between -100 and 100  
 * copying a range of cells (vector or matrices) and then pasting the cell range where you've pasted the values to will be still highlighted from here you can still press ctrl and see what paste options you want to have happen, 
 * if you want a vector or matrix of cells to remain unmoved while you scroll horizontally and/or vertically click `view -> freeze panes`
+autofill iss useful for repeating sequences of  data with patterns, e.g. Mon then next Tues, next Wed
+
+5, 10, then next 15, 20, 25, 
+s
 ## important shortcuts in excel
 * ctrl + n
 * to make widths or heights of each column or row the same select the range of columns or rows and right click one of the divider lines of these selected range of columns and row indeces, a dialog will popup indicating what value you want for the width or height then press enter
 * to edit cell you can type directly into it or press f2
+* ctrl + shift + arrow keys (left right down up) will select all the cells in a range of rows or columns that have values
 
 # Questions:
 * how to fill in missing values?
 * how to drop undesired values based on a filter?
-* what is formatting data?
+* what is formatting data? Select a column of numbers then we select the formatting of this column and set it to currency to turn numbers into currency e.g. with decimals etc.
