@@ -82,6 +82,9 @@ def view_feat_outliers(df: pd.DataFrame, num_cols: list | pd.Index, fig_dims: tu
         'ggplot': 'ggplot',
     }
 
+    
+    
+
     plt.style.use(styles.get(style, 'default'))
 
     # unpack dimensions of figure
@@ -119,7 +122,28 @@ def view_feat_outliers(df: pd.DataFrame, num_cols: list | pd.Index, fig_dims: tu
         # outliers[col] = col_outliers
 
         # create boxplots
-        ax = df.boxplot(column=col, vert=False, figsize=(15, 15), ax=axes[i])
+        # meta data for boxplot design
+        kwargs_list = [
+            
+        ]
+
+        # colors to choose from
+        colors = ["#f54949", "#f59a45", "#afb809", "#51ad00", "#03a65d", "#035aa6", "#03078a", "#6902e6", "#c005e6", "#fa69a3", "#240511", "#052224", "#402708",]
+        sampled_idx = np.random.choice(list(range(len(colors))), size=1, replace=False)[0]
+        kwargs = {
+            "whiskerprops": dict(color=colors[sampled_idx]),
+            "boxprops": dict(color=colors[sampled_idx], facecolor=colors[sampled_idx]),
+            "capprops": dict(color=colors[sampled_idx]),
+            "flierprops": dict(markeredgecolor=colors[sampled_idx], color=colors[sampled_idx]),
+            "medianprops": dict(color=colors[sampled_idx]),
+        }
+        # print(kwargs)
+
+        # build boxplot
+        # a patch artist of true will fill the box plot a notch of 
+        # true will let's say wedge the box plot in the median of the box
+        # to represent the median
+        ax = df.boxplot(column=col, vert=False, figsize=(15, 15), ax=axes[i], patch_artist=True, notch=True, **kwargs)
         
         # shifts the 
         offset = -5
@@ -140,6 +164,8 @@ def view_feat_outliers(df: pd.DataFrame, num_cols: list | pd.Index, fig_dims: tu
         ax.annotate(f'25%: {round(num_cols_desc[col]["25%"], 2)}', xy=(num_cols_desc[col]["25%"], 1), xytext=(num_cols_desc[col]["25%"] + offset, 0.75), arrowprops=arrowprops)
         ax.annotate(f'95%: {round(_95_p, 2)}', xy=(round(_95_p, 2), 1), xytext=(round(_95_p, 2) + offset, 1.25), arrowprops=arrowprops)
         ax.annotate(f'5%: {round(_05_p, 2)}', xy=(round(_05_p, 2), 1), xytext=(round(_05_p, 2) + offset, 1.25), arrowprops=arrowprops)
+        ax.annotate(f'max: {round(num_cols_desc[col]["max"], 2)}', xy=(num_cols_desc[col]["max"], 1), xytext=(num_cols_desc[col]["max"] + offset, 0.75), arrowprops=arrowprops)
+        ax.annotate(f'min: {round(num_cols_desc[col]["min"], 2)}', xy=(num_cols_desc[col]["min"], 1), xytext=(num_cols_desc[col]["min"] + offset, 0.75), arrowprops=arrowprops)
         ax.annotate(f'lower whisker: {lower_whisker}', xy=(lower_whisker, 1), xytext=(lower_whisker + offset, 1.25), arrowprops=arrowprops)
         ax.annotate(f'upper whisker: {upper_whisker}', xy=(upper_whisker, 1), xytext=(upper_whisker + offset, 1.25), arrowprops=arrowprops)
 
